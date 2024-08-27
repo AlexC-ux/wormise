@@ -14,12 +14,12 @@ export type WorkerData<ParamsType> = {
 
 export async function wormise<ParamsType, ReturnType extends Object>(
   params: ParamsType,
-  cb: CallbackType<ParamsType, ReturnType>,
+  executedFunction: CallbackType<ParamsType, ReturnType>,
 ): Promise<ReturnType> {
   return new Promise<ReturnType>((resolve, reject) => {
     const workerScriptPath = join(__dirname, 'thread.js');
     const workerData: WorkerData<ParamsType> = {
-      cb: cb.toString(),
+      cb: `(()=>${executedFunction.toString()})()`,
       params,
     };
     const worker = new worker_threads.Worker(workerScriptPath, {

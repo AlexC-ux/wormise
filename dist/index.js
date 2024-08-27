@@ -12,12 +12,12 @@ import { fileURLToPath } from 'node:url';
 import worker_threads from 'node:worker_threads';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-export function wormise(params, cb) {
+export function wormise(params, executedFunction) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             const workerScriptPath = join(__dirname, 'thread.js');
             const workerData = {
-                cb: cb.toString(),
+                cb: `(()=>${executedFunction.toString()})()`,
                 params,
             };
             const worker = new worker_threads.Worker(workerScriptPath, {
@@ -39,17 +39,3 @@ export function wormise(params, cb) {
         });
     });
 }
-function testP() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const rrr = yield wormise(101, (params) => {
-                return (params + 11).toString();
-            });
-            console.log({ rrr });
-        }
-        catch (error) {
-            console.error({ error });
-        }
-    });
-}
-testP();
