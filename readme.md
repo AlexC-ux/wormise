@@ -6,11 +6,27 @@
 
 Благодаря `wormise` вы можете получить удобный интерфейс-обертку для работы с вычислениями в новом потоке.
 
+### Описание
+
+`wormise(params, executedFunction): Promise`
+
+`params` - параметры, переданные функции executedFunction.
+
+`executedFunction` - функция, выполняемая в отдельном потоке.
+
 ## EN
 
 This library allows you to **execute a function in a new thread** and access the results of the calculation through `Promise`.
 
 With `wormise`, you can get a convenient wrapper interface to work with computations in a new thread.
+
+### Description
+
+`wormise(params, executedFunction): Promise`
+
+`params` - parameters passed to the function executedFunction.
+
+`executedFunction` - function executed in a separate thread.
 
 ## Usage example
 
