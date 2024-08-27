@@ -1,0 +1,23 @@
+{
+  "name": "wormise",
+  "version": "1.0.0",
+  "description": "Worker thread as promise",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsc && node dist/index.js"
+  },
+  "keywords": [
+    "promise",
+    "worker thread",
+    "wormise"
+  ],
+  "author": "AlexC-ux",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
