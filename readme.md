@@ -1,4 +1,5 @@
 # Wormise
+![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d)
 
 ## RU
 
