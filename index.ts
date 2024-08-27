@@ -12,7 +12,7 @@ export type WorkerData<ParamsType> = {
   cb: string;
 };
 
-export async function wormise<ParamsType, ReturnType extends Object>(
+export default async function wormise<ParamsType, ReturnType extends Object>(
   params: ParamsType,
   executedFunction: CallbackType<ParamsType, ReturnType>,
 ): Promise<ReturnType> {

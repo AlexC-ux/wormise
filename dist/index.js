@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 import worker_threads from 'node:worker_threads';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-export function wormise(params, executedFunction) {
+export default function wormise(params, executedFunction) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             const workerScriptPath = join(__dirname, 'thread.js');

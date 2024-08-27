@@ -1,7 +1,6 @@
 var _a;
 import worker_threads from 'node:worker_threads';
 const workerData = worker_threads.workerData;
-console.log({ cb: workerData.cb });
 const callback = eval(workerData.cb);
 let result = undefined;
 try {
