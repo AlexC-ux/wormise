@@ -47,3 +47,21 @@ async function getCalculationsResult() {
 }
 getCalculationsResult()
 ```
+
+## Example tsconfig.json
+
+``` json
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "moduleResolution": "NodeNext",
+        "outDir": "dist",
+    }
+}
+```
