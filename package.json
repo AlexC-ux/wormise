@@ -1,9 +1,13 @@
 {
   "name": "wormise",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Worker thread as promise",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexC-ux/wormise.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsc && node index.js"
@@ -11,7 +15,8 @@
   "keywords": [
     "promise",
     "worker thread",
-    "wormise"
+    "wormise",
+    "multithreading"
   ],
   "author": "AlexC-ux",
   "license": "ISC",
