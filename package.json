@@ -1,12 +1,12 @@
 {
   "name": "wormise",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Worker thread as promise",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc && node dist/index.js"
+    "dev": "npx tsc && node index.js"
   },
   "keywords": [
     "promise",
