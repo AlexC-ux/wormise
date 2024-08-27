@@ -15,15 +15,18 @@ With `wormise`, you can get a convenient wrapper interface to work with computat
 ## Usage example
 
 ``` typescript
-async function getCalculationsResul() {
-  try {
-    const result = await wormise(0, (params: number) => {
-      // Complicated calculations
-      return new Date(params);
-    });
-    console.log(result);
-  } catch (error) {
-    console.error(error);
-  }
+import wormise from "wormise";
+
+async function getCalculationsResult() {
+    try {
+        const result = await wormise(0, (params) => {
+            // Complicated calculations
+            return new Date(params);
+        });
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
 }
+getCalculationsResult()
 ```
