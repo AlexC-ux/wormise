@@ -18,7 +18,7 @@ export default function wormise(params, executedFunction) {
             const workerScriptPath = join(__dirname, 'thread.js');
             const workerData = {
                 cb: `(()=>${executedFunction.toString()})()`,
-                params,
+                params: params,
             };
             const worker = new worker_threads.Worker(workerScriptPath, {
                 workerData,

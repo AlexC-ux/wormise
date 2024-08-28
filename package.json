@@ -9,7 +9,7 @@
     "url": "git+https://github.com/AlexC-ux/wormise.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "exit 0",
     "dev": "npx tsc && node build/index.js",
     "build": "npx tsc"
   },
@@ -27,7 +27,6 @@
   "license": "GNU",
   "devDependencies": {
     "@types/node": "^22.5.1",
-    "prettier": "^3.3.3",
-    "ts-node": "^10.9.2"
+    "prettier": "^3.3.3"
   }
 }
