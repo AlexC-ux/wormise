@@ -1,6 +1,6 @@
 {
   "name": "wormise",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Worker thread as promise",
   "main": "build/index.js",
   "type": "module",
