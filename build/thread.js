@@ -1,4 +1,3 @@
-var _a;
 import worker_threads from 'worker_threads';
 const workerData = worker_threads.workerData;
 const callback = eval(workerData.cb);
@@ -9,4 +8,4 @@ try {
 catch (error) {
     throw error;
 }
-(_a = worker_threads.parentPort) === null || _a === void 0 ? void 0 : _a.postMessage(result);
+worker_threads.parentPort?.postMessage(result);
