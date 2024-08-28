@@ -1,5 +1,5 @@
 var _a;
-import worker_threads from 'node:worker_threads';
+import worker_threads from 'worker_threads';
 const workerData = worker_threads.workerData;
 const callback = eval(workerData.cb);
 let result = undefined;

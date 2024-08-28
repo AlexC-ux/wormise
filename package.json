@@ -1,8 +1,8 @@
 {
   "name": "wormise",
-  "version": "1.0.9",
+  "version": "2.0.1",
   "description": "Worker thread as promise",
-  "main": "index.js",
+  "main": "build/index.js",
   "type": "module",
   "repository": {
     "type": "git",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc && node index.js"
+    "dev": "npx tsc && node build/index.js",
+    "build": "npx tsc"
   },
   "keywords": [
     "promise",
@@ -21,7 +22,7 @@
   "author": "AlexC-ux",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.5.0",
+    "@types/node": "^22.5.1",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2"
   }
