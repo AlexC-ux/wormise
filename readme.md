@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/npm/v/wormise)![](https://img.shields.io/badge/npm_i_wormise-red)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/github/stars/AlexC-ux/wormise)](https://github.com/AlexC-ux/wormise)
 
-![](https://img.shields.io/hackage-deps/v/wormise) ![](https://img.shields.io/npm/dm/wormise) 
+![](https://img.shields.io/hackage-deps/v/wormise) ![](https://img.shields.io/npm/dm/wormise)
 
 ![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d)
 
@@ -36,37 +36,52 @@ With `wormise`, you can get a convenient wrapper interface to work with computat
 
 ## Usage example
 
-``` typescript
-import wormise from "wormise";
+### Without imports
+
+```typescript
+import wormise from 'wormise';
 
 async function getCalculationsResult() {
-    try {
-        const result = await wormise(0, (params) => {
-            // Complicated calculations
-            return new Date(params);
-        });
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    const result = await wormise(0, params => {
+      // Complicated calculations
+      return new Date(params);
+    });
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
 }
-getCalculationsResult()
+getCalculationsResult();
+```
+
+### With imports
+
+```typescript
+const data = wormise(undefined, () => {
+  (async () => {
+    // @ts-ignore
+    const { threadId } = await import('worker_threads');
+    console.log({ threadId });
+  })();
+});
 ```
 
 ## Example tsconfig.json
 
-``` json
+```json
 {
-    "compilerOptions": {
-        "target": "es2016",
-        "module": "NodeNext",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noImplicitAny": true,
-        "skipLibCheck": true,
-        "moduleResolution": "NodeNext",
-        "outDir": "dist",
-    }
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "moduleResolution": "NodeNext",
+    "noEmitHelpers": true,
+    "outDir": "dist"
+  }
 }
 ```
