@@ -1,5 +1,5 @@
 import worker_threads from 'worker_threads';
-import { WorkerData } from 'wormise/src';
+import { WorkerData } from './index.js';
 
 const workerData: WorkerData<number> = worker_threads.workerData;
 const callback = eval(workerData.cb);
