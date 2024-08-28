@@ -58,6 +58,9 @@ getCalculationsResult();
 ### With imports
 
 ```typescript
+import wormise from 'wormise';
+import { threadId } from 'worker_threads';
+console.log({ threadId });
 const data = wormise(undefined, () => {
   (async () => {
     // @ts-ignore
@@ -65,6 +68,10 @@ const data = wormise(undefined, () => {
     console.log({ threadId });
   })();
 });
+
+// Output:
+// { threadId: 0 }
+// { threadId: 1 }
 ```
 
 ## Example tsconfig.json
