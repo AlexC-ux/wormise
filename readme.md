@@ -63,7 +63,6 @@ import { threadId } from 'worker_threads';
 console.log({ threadId });
 const data = wormise(undefined, () => {
   (async () => {
-    // @ts-ignore
     const { threadId } = await import('worker_threads');
     console.log({ threadId });
   })();
