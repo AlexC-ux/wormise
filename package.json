@@ -17,10 +17,14 @@
     "promise",
     "worker thread",
     "wormise",
-    "multithreading"
+    "multithreading",
+    "promise in thread",
+    "multithreading promise",
+    "function in thread",
+    "function multithreading"
   ],
   "author": "AlexC-ux",
-  "license": "ISC",
+  "license": "GNU",
   "devDependencies": {
     "@types/node": "^22.5.1",
     "prettier": "^3.3.3",
