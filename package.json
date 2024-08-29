@@ -1,6 +1,6 @@
 {
   "name": "wormise",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "With this library, you can create a Promise that executes in a new thread.",
   "main": "build/index.js",
   "type": "module",
@@ -9,9 +9,10 @@
     "url": "git+https://github.com/AlexC-ux/wormise.git"
   },
   "scripts": {
-    "test": "exit 0",
+    "test": "npm run build:tests && ts-mocha --recursive test-build/**/__tests__/*.test.js",
     "dev": "npx tsc && node build/index.js",
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "build:tests": "npx tsc --project tsconfig.test.json"
   },
   "keywords": [
     "promise",
@@ -26,8 +27,13 @@
   "author": "AlexC-ux",
   "license": "GNU",
   "devDependencies": {
+    "@types/chai": "^4.3.19",
+    "@types/mocha": "^10.0.7",
     "@types/node": "^22.5.1",
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
     "prettier": "^3.3.3",
+    "ts-mocha": "^10.0.0",
     "typescript": "^5.5.4"
   }
 }

@@ -9,14 +9,11 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "outDir": "build",
+    "outDir": "test-build",
     "declaration": true,
     "rootDir": "src",
   },
   "include": [
     "src/**/*"
-  ],
-  "exclude": [
-    "src/**/__tests__/*"
   ]
 }

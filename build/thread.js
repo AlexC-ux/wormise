@@ -1,11 +1,41 @@
 import worker_threads from 'worker_threads';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 const workerData = worker_threads.workerData;
-const callback = eval(workerData.cb);
+let functionText = workerData.cb;
+const replaceImports = () => {
+    const callerPath = path.parse(`${workerData.callerPath.replace(/\//g, '\\')}/index.js`).dir.replace(/\//g, '\\');
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.parse(`${dirname(__filename).replace(/\//g, '\\')}/index.js`).dir.replace(/\//g, '\\\\');
+    const imports = functionText.match(/import\(.\.\/(.*).\)/gm);
+    const importsReplced = [];
+    if (!!imports && callerPath) {
+        for (const importName of imports) {
+            const importFilePath = importName.replace(/import\(.(.*).\)/, '$1');
+            const newImportPath = './' + path.join('.', callerPath.replace(__dirname, ''), importFilePath).replace(/\\/g, '/');
+            importsReplced.push(newImportPath);
+        }
+    }
+    for (let index = 0; index < (imports?.length ?? 0); index++) {
+        const originalImport = imports?.[index];
+        const newImport = importsReplced?.[index];
+        if (originalImport && newImport) {
+            functionText = functionText.replaceAll(originalImport, originalImport.replace(/(import\(.)(.*)(.\))/, '$1' + newImport + '$3'));
+        }
+    }
+};
+if (workerData.options?.fixImports !== false) {
+    replaceImports();
+}
+const callback = eval(functionText);
 let result = undefined;
-try {
-    result = callback(workerData.params);
+async function run() {
+    try {
+        result = await callback(workerData.params);
+    }
+    catch (error) {
+        throw error;
+    }
+    worker_threads.parentPort?.postMessage(result);
 }
-catch (error) {
-    throw error;
-}
-worker_threads.parentPort?.postMessage(result);
+run();
