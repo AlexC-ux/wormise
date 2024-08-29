@@ -9,7 +9,8 @@ let functionText = workerData.cb;
 const replaceImports = () => {
   const callerPath = path.parse(`${workerData.callerPath!.replace(/\//g, '\\')}/index.js`).dir.replace(/\//g, '\\');
   const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.parse(`${dirname(__filename).replace(/\//g, '\\')}/index.js`).dir.replace(/\//g, '\\\\');
+  const __dirname = path.parse(`${dirname(__filename).replace(/\//g, '\\')}/index.js`).dir.replace(/\//g, '\\');
+  console.log({ __dirname, callerPath });
   const imports = functionText.match(/import\(.\.\/(.*).\)/gm);
   const importsReplced: string[] = [];
   if (!!imports && callerPath) {
