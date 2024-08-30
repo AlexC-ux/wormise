@@ -55,7 +55,7 @@ export default async function wormise<ParamsType, ReturnType extends CallbackRet
         clearTimeout(unlinkTimeout);
         unlinkTimeout = setTimeout(() => {
           fs.unlinkSync(newThreadPath);
-        }, 100);
+        }, 500);
       }
     });
     worker.on('error', workerError => {
