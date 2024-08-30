@@ -93,6 +93,7 @@ describe('Wormise', () => {
       undefined,
     );
     expect(wormiseThreadId).to.be.greaterThan(0);
+    expect(thisThreadId).to.be.equal(0);
     expect(thisThreadId).to.not.equal(wormiseThreadId);
   });
 });
