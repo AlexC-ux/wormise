@@ -96,4 +96,23 @@ describe('Wormise', () => {
     expect(thisThreadId).to.be.equal(0);
     expect(thisThreadId).to.not.equal(wormiseThreadId);
   });
+
+  it('return correct value if durable operation', async () => {
+    const calcResult = await wormise(
+      async (a: number) => {
+        await new Promise<undefined>(res => {
+          setTimeout(() => {
+            res(undefined);
+          }, 1500);
+        });
+        const asyncResult = await new Promise(resolve => {
+          resolve(a + 1);
+        });
+        return await asyncResult;
+      },
+      currentDir,
+      0,
+    );
+    expect(calcResult).to.equal(1);
+  });
 });
