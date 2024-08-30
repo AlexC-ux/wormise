@@ -1,3 +1,4 @@
+export declare const wormiseDafaultDirname: (metaUrl: string) => string;
 type CallbackReturnType = Object | void;
 type CallbackType<ParamsType, ReturnType> = (params: ParamsType) => ReturnType;
 /**
@@ -10,8 +11,7 @@ export interface WormiseOptions {
 export type WorkerData<ParamsType> = {
     params: ParamsType;
     cb: string;
-    callerPath: string;
-    options?: WormiseOptions;
+    rmThreadjsFile: string;
 };
-export default function wormise<ParamsType, ReturnType extends CallbackReturnType>(params: ParamsType, executedFunction: CallbackType<ParamsType, ReturnType>, options?: WormiseOptions): Promise<ReturnType>;
+export default function wormise<ParamsType, ReturnType extends CallbackReturnType>(executedFunction: CallbackType<ParamsType, ReturnType>, dir: string, params: ParamsType): Promise<ReturnType>;
 export {};

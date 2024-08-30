@@ -14,15 +14,13 @@
 
 ### Описание
 
-`wormise(params, executedFunction, ?options): Promise`
+`wormise(executedFunction, dir, params): Promise`
 
-`params` - параметры, переданные функции executedFunction.
+`dir` - папка в которой выполняется вызов wormise
 
 `executedFunction` - функция, выполняемая в отдельном потоке.
 
-`options` - необязательные настройки.
-
-Указание `options.fixImports = false` позволяет использовать отключить исправление импортов. Пример представлен ниже.
+`params` - параметры для _executedFunction_
 
 ## EN
 
@@ -32,29 +30,31 @@ With `wormise`, you can get a convenient wrapper interface to work with computat
 
 ### Description
 
-`wormise(params, executedFunction, ?options): Promise`
+`wormise(executedFunction, dir, params): Promise`
 
-`params` - parameters passed to the function executedFunction.
+`dir` - the folder where the wormise call is made.
 
 `executedFunction` - function executed in a separate thread.
 
-`options` - optional settings.
-
-Use `options.fixImports = false` to disable imports rewrite. Example is shown below.
+`params` - arguments for _executedFunction_
 
 ## Usage example
 
 ### Without imports
 
 ```typescript
-import wormise from 'wormise';
-
+import wormise, { wormiseDafaultDirname } from 'wormise';
+const dir = wormiseDafaultDirname(import.meta.url);
 async function getCalculationsResult() {
   try {
-    const result = await wormise(0, params => {
-      // Complicated calculations
-      return new Date(params);
-    });
+    const result = await wormise(
+      params => {
+        // Complicated calculations
+        return new Date(params);
+      },
+      dir,
+      Date.now(),
+    );
     console.log(result);
   } catch (error) {
     console.error(error);
@@ -66,53 +66,25 @@ getCalculationsResult();
 ### With imports
 
 ```typescript
-import wormise from 'wormise';
+import wormise, { wormiseDafaultDirname } from 'wormise';
+const dir = wormiseDafaultDirname(import.meta.url);
 import { threadId } from 'worker_threads';
 console.log({ threadId });
-const data = wormise(undefined, () => {
-  (async () => {
-    const { threadId } = await import('worker_threads');
-    console.log({ threadId });
-  })();
-});
+const data = wormise(
+  async () => {
+    const logWormiseThreadId = async () => {
+      const { threadId } = await import('worker_threads');
+      console.log({ threadId });
+    };
+    await logWormiseThreadId();
+  },
+  dir,
+  undefined,
+);
 
 // Output:
 // { threadId: 0 }
 // { threadId: 1 }
-```
-
-#### Import project lib
-
-```typescript
-it('return correct value with imports async', async () => {
-  const calcResult = await wormise(0, async (a: number) => {
-    const { mockAsyncFn } = await import('./mock-lib.js');
-    const asyncResult = await new Promise(async resolve => {
-      const b = await mockAsyncFn(a);
-      resolve(b + 1);
-    });
-    return await asyncResult;
-  });
-  expect(calcResult).to.equal(102);
-});
-```
-
-#### Import project lib (no fixImports)
-
-```typescript
-const calcResult = await wormise(
-  0,
-  async (a: number) => {
-    //@ts-ignore
-    const { mockAsyncFn } = await import('./__tests__/mock-lib.js');
-    const asyncResult = await new Promise(async resolve => {
-      const b = await mockAsyncFn(a);
-      resolve(b + 1);
-    });
-    return await asyncResult;
-  },
-  { fixImports: false },
-);
 ```
 
 ## Example tsconfig.json
