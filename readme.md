@@ -8,7 +8,7 @@
 
 ## RU
 
-Эта библиотека позволяет **выполнять функцию в новом потоке** и получать доступ к результатам вычислений через `Promise`.
+Эта Node.js библиотека позволяет **выполнять функцию в новом потоке** и получать доступ к результатам вычислений через `Promise`.
 
 Благодаря `wormise` вы можете получить удобный интерфейс-обертку для работы с вычислениями в новом потоке.
 
@@ -24,7 +24,7 @@
 
 ## EN
 
-This library allows you to **execute a function in a new thread** and access the results of the calculation through `Promise`.
+This Node.js library allows you to **execute a function in a new thread** and access the results of the calculation through `Promise`.
 
 With `wormise`, you can get a convenient wrapper interface to work with computations in a new thread.
 
