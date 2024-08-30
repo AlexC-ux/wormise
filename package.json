@@ -1,8 +1,8 @@
 {
   "name": "wormise",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "With this library, you can create a Promise that executes in a new thread.",
-  "main": "src/index.ts",
+  "main": "build/index.js",
   "type": "module",
   "repository": {
     "type": "git",
