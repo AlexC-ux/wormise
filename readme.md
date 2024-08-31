@@ -4,6 +4,8 @@
 
 ![](https://img.shields.io/hackage-deps/v/wormise) ![](https://img.shields.io/npm/dm/wormise)
 
+![](https://github.com/AlexC-ux/wormise/actions/workflows/wf-testing.yml/badge.svg?branch=main)
+
 ![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d)
 
 ## RU
