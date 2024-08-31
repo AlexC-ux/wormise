@@ -30,7 +30,7 @@ export default async function wormise(executedFunction, dir, params) {
                 clearTimeout(unlinkTimeout);
                 unlinkTimeout = setTimeout(() => {
                     fs.unlinkSync(newThreadPath);
-                }, 100);
+                }, 500);
             }
         });
         worker.on('error', workerError => {
