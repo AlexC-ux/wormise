@@ -42,6 +42,8 @@ With `wormise`, you can get a convenient wrapper interface to work with computat
 
 ## Usage example
 
+[Codesandbox example link](https://codesandbox.io/p/devbox/wormise-example-k3z3dk?file=%2Findex.js)
+
 ### Without imports
 
 ```typescript
