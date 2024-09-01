@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import worker_threads from 'node:worker_threads';
 import fs from 'fs';
+import { ThreadResultMessage } from './thread.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -49,8 +50,12 @@ export default async function wormise<ParamsType, ReturnType extends CallbackRet
     const worker = new worker_threads.Worker(newThreadPath, {
       workerData,
     });
-    worker.on('message', workerResult => {
-      resolve(workerResult);
+    worker.on('message', (workerResult: ThreadResultMessage) => {
+      if (workerResult.error) {
+        reject(workerResult.result);
+      } else {
+        resolve(workerResult.result);
+      }
       if (unlinkTimeout) {
         clearTimeout(unlinkTimeout);
         unlinkTimeout = setTimeout(() => {

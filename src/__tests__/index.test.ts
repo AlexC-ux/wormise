@@ -115,4 +115,23 @@ describe('Wormise', () => {
     );
     expect(calcResult).to.equal(1);
   });
+
+  it('return correct value if thrown error', async () => {
+    let hasError = false;
+    let errorMessage = '';
+    try {
+      await wormise(
+        async (a: number) => {
+          throw 'expected error message';
+        },
+        currentDir,
+        0,
+      );
+    } catch (err) {
+      errorMessage = `${err}`;
+      hasError = true;
+    }
+    expect(hasError).to.be.true;
+    expect(errorMessage).to.equal('expected error message');
+  });
 });
