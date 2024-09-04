@@ -1,4 +1,4 @@
-import worker_threads from 'worker_threads';
+import worker_threads from 'node:worker_threads';
 
 export interface ThreadResultMessageError {
   error: true;
