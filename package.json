@@ -12,8 +12,8 @@
     "test": "npm run build:tests && ts-mocha test-build/**/__tests__/*.test.js",
     "dev": "npx tsc && node build/index.js",
     "examples:dev": "npx tsc --project tsconfig.example.json && node examples-build/examples/index.js",
-    "build": "rimraf build && npx tsc",
-    "build:tests": "npx tsc --project tsconfig.test.json"
+    "build": "rimraf build && npx rollup -c rollup.config.mjs",
+    "build:tests": "rimraf test-build && npx rollup -c test.rollup.config.mjs"
   },
   "keywords": [
     "promise",
@@ -31,6 +31,8 @@
   "author": "AlexC-ux",
   "license": "GNU",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/chai": "^4.3.19",
     "@types/mocha": "^10.0.7",
     "@types/node": "^22.5.1",
@@ -38,7 +40,10 @@
     "mocha": "^10.7.3",
     "prettier": "^3.3.3",
     "rimraf": "^5.0.10",
+    "rollup": "^4.21.2",
+    "rollup-plugin-multi-input": "^1.5.0",
     "ts-mocha": "^10.0.0",
+    "tslib": "^2.7.0",
     "typescript": "^5.5.4"
   }
 }
