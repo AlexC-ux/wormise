@@ -1,9 +1,9 @@
 import typescript from "@rollup/plugin-typescript";
 import multiInput from 'rollup-plugin-multi-input';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
 export default {
     input: ["src/**/*"],
-    external: ["node:worker_threads", "node:path", "node:url", "fs"],
     output: {
         dir: "./test-build",
         format: "es",
@@ -11,6 +11,7 @@ export default {
         sourcemap: true
     },
     plugins: [
+        nodeResolve(),
         typescript({
             tsconfig: "./tsconfig.test.json"
         }),

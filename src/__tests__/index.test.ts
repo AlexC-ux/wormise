@@ -1,5 +1,4 @@
 import wormise, { wormiseDafaultDirname } from '../index.js';
-import { it } from 'mocha';
 import { expect } from 'chai';
 import { threadId } from 'worker_threads';
 const currentDir = wormiseDafaultDirname(import.meta.url);

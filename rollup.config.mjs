@@ -1,9 +1,9 @@
 import typescript from "@rollup/plugin-typescript";
 import terser from '@rollup/plugin-terser';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
 export default {
     input: ["src/index.ts", "src/thread.ts"],
-    external: ["node:worker_threads", "node:path", "node:url", "fs"],
     output: {
         dir: "build",
         format: "es",
@@ -11,6 +11,7 @@ export default {
         sourcemap: false,
     },
     plugins: [
+        nodeResolve(),
         typescript({
             tsconfig: "./tsconfig.json"
         }),
