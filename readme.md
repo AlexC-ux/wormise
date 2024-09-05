@@ -1,7 +1,7 @@
 
 # Wormise
 
-![](https://img.shields.io/bundlephobia/minzip/wormise) ![](https://img.shields.io/bundlephobia/min/wormise)
+![](https://img.shields.io/bundlephobia/minzip/wormise)
 
 [![](https://img.shields.io/npm/v/wormise)![](https://img.shields.io/badge/npm_i_wormise-red)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/github/stars/AlexC-ux/wormise)](https://github.com/AlexC-ux/wormise)
 
