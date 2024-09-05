@@ -1,15 +1,12 @@
 
 # Wormise
 
-![](https://img.shields.io/bundlephobia/minzip/wormise)
 
-[![](https://img.shields.io/npm/v/wormise)![](https://img.shields.io/badge/npm_i_wormise-red)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/github/stars/AlexC-ux/wormise)](https://github.com/AlexC-ux/wormise)
+![](https://img.shields.io/bundlephobia/minzip/wormise) [![](https://img.shields.io/npm/v/wormise)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/badge/npm_i_wormise-blue)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/github/stars/AlexC-ux/wormise)](https://github.com/AlexC-ux/wormise) ![](https://img.shields.io/npm/dm/wormise) ![](https://img.shields.io/hackage-deps/v/wormise) ![](https://github.com/AlexC-ux/wormise/actions/workflows/wf-testing.yml/badge.svg?branch=main)
 
-![](https://img.shields.io/hackage-deps/v/wormise) ![](https://img.shields.io/npm/dm/wormise)
 
-![](https://github.com/AlexC-ux/wormise/actions/workflows/wf-testing.yml/badge.svg?branch=main)
 
-![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d)
+![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d) 
 
 ## RU
 
