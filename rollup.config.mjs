@@ -6,7 +6,7 @@ export default {
     input: ["src/index.ts", "src/thread.ts"],
     output: {
         dir: "build",
-        format: "es",
+        format: "cjs",
         compact: true,
         sourcemap: false,
     },
