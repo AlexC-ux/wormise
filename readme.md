@@ -20,11 +20,15 @@
 
 `params` - параметры для _executedFunction_
 
+Поддерживает ESM (`wormise/esm`) и CJS (`wormise/cjs`).
+
 ## EN
 
 This Node.js library allows you to **execute a function in a new thread** and access the results of the calculation through `Promise`.
 
 With `wormise`, you can get a convenient wrapper interface to work with computations in a new thread.
+
+Supports ESM (`wormise/esm`) and CJS (`wormise/cjs`).
 
 ### Description
 
