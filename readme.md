@@ -1,10 +1,6 @@
-
 # Wormise
 
-
 ![](https://img.shields.io/bundlephobia/minzip/wormise) [![](https://img.shields.io/npm/v/wormise)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/badge/npm_i_wormise-blue)](https://www.npmjs.com/package/wormise) [![](https://img.shields.io/github/stars/AlexC-ux/wormise)](https://github.com/AlexC-ux/wormise) ![](https://img.shields.io/npm/dm/wormise) ![](https://img.shields.io/hackage-deps/v/wormise) ![](https://github.com/AlexC-ux/wormise/actions/workflows/wf-testing.yml/badge.svg?branch=main)
-
-
 
 ![wormise](https://github.com/user-attachments/assets/966e0952-6afa-43f8-8329-5c888fe8077d) ![](https://mc.yandex.ru/watch/98264235)
 
@@ -47,7 +43,7 @@ With `wormise`, you can get a convenient wrapper interface to work with computat
 ### Without imports
 
 ```typescript
-import wormise, { wormiseDafaultDirname } from 'wormise';
+import wormise, { wormiseDafaultDirname } from 'wormise/esm';
 const dir = wormiseDafaultDirname(import.meta.url);
 async function getCalculationsResult() {
   try {
@@ -70,7 +66,7 @@ getCalculationsResult();
 ### With imports
 
 ```typescript
-import wormise, { wormiseDafaultDirname } from 'wormise';
+import wormise, { wormiseDafaultDirname } from 'wormise/esm';
 const dir = wormiseDafaultDirname(import.meta.url);
 import { threadId } from 'worker_threads';
 console.log({ threadId });
@@ -108,4 +104,28 @@ const data = wormise(
     "outDir": "dist"
   }
 }
+```
+
+## Using in CommonJS
+
+Just import from wormise/cjs like this:
+
+```typescript
+import wormise, { wormiseDafaultDirname } from 'wormise/cjs';
+async function getCalculationsResult() {
+  try {
+    const result = await wormise(
+      params => {
+        // Complicated calculations
+        return new Date(params);
+      },
+      __dirname,
+      Date.now(),
+    );
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
+getCalculationsResult();
 ```

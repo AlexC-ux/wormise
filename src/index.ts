@@ -3,13 +3,12 @@ import { fileURLToPath } from 'node:url';
 import worker_threads from 'node:worker_threads';
 import fs from 'fs';
 import { ThreadResultMessage } from './thread.js';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const _dirname = typeof __dirname !== 'undefined' ? __dirname : dirname(fileURLToPath(import.meta.url));
 
 export const wormiseDafaultDirname = (metaUrl: string) => {
-  const __filename = fileURLToPath(metaUrl);
-  const __dirname = dirname(__filename);
-  return __dirname;
+  const filename = fileURLToPath(metaUrl);
+  const dir = dirname(filename);
+  return dir;
 };
 
 type CallbackReturnType = Object | void;
@@ -37,7 +36,7 @@ export default async function wormise<ParamsType, ReturnType extends CallbackRet
   params: ParamsType,
 ): Promise<ReturnType> {
   return new Promise<ReturnType>((resolve, reject) => {
-    const origThreadPath = join(__dirname, 'thread.js');
+    const origThreadPath = join(_dirname, 'thread.js');
     const newThreadPath = join(dir, 'thread.js');
 
     const origThreadContent = fs.readFileSync(origThreadPath, 'utf8');
