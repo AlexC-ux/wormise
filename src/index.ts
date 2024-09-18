@@ -55,22 +55,19 @@ export default async function wormise<ParamsType, ReturnType extends CallbackRet
       } else {
         resolve(workerResult.result);
       }
-      if (unlinkTimeout) {
-        clearTimeout(unlinkTimeout);
-        unlinkTimeout = setTimeout(() => {
-          fs.unlinkSync(newThreadPath);
-        }, 500);
+      try {
+        if (unlinkTimeout) {
+          clearTimeout(unlinkTimeout);
+          unlinkTimeout = setTimeout(() => {
+            fs.unlinkSync(newThreadPath);
+          }, 500);
+        }
+      } catch (error) {
+        console.error(error);
       }
     });
     worker.on('error', workerError => {
       reject(workerError);
-    });
-    worker.on('exit', (code: number, message: string) => {
-      const errorObject = {
-        message: `Worker stopped with exit code ${code}`,
-        code,
-      };
-      reject(new Error(JSON.stringify(errorObject)));
     });
   });
 }

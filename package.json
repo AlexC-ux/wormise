@@ -1,6 +1,6 @@
 {
   "name": "wormise",
-  "version": "2.0.43",
+  "version": "2.0.44",
   "description": "With this library, you can create a Promise that executes in a new thread.",
   "exports": {
     "./esm": {
