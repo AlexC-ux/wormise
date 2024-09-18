@@ -133,4 +133,34 @@ describe('Wormise', () => {
     expect(hasError).to.be.true;
     expect(errorMessage).to.equal('expected error message');
   });
+
+  it('Works with many threads', async () => {
+    const threasCount = 15;
+
+    const mockFn = async () => {
+      const treads = await import('worker_threads');
+      await new Promise<undefined>(res => {
+        setTimeout(() => {
+          res(undefined);
+        }, 200);
+      });
+      const asyncResult = await new Promise<number>(resolve => {
+        resolve(treads.threadId);
+      });
+      return await asyncResult;
+    };
+    const promises = [];
+
+    for (let i = 0; i < threasCount; i++) {
+      const calcResult = wormise<any, Promise<number>>(mockFn, currentDir, undefined);
+      promises.push(calcResult);
+    }
+    const awaitedPromises = await Promise.all(promises);
+    expect(promises).to.have.length(threasCount);
+    expect(awaitedPromises).to.have.length(promises.length);
+    for (const threadId of awaitedPromises) {
+      const threadIds = awaitedPromises.filter(promiseThreadId => promiseThreadId === threadId);
+      expect(threadIds).to.have.length(1);
+    }
+  }).timeout(1000);
 });
