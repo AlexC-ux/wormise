@@ -1,6 +1,6 @@
 {
   "name": "wormise",
-  "version": "2.0.44",
+  "version": "2.0.45",
   "description": "With this library, you can create a Promise that executes in a new thread.",
   "exports": {
     "./esm": {
@@ -23,6 +23,7 @@
     }
   },
   "type": "module",
+  "main": "./build/cjs/index.cjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexC-ux/wormise.git"
